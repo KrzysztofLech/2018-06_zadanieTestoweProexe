@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MessageUI
 
 class TableViewController: UIViewController {
     
@@ -41,23 +40,17 @@ class TableViewController: UIViewController {
     }
     
     @IBAction func shareButtonAction(_ sender: UIBarButtonItem) {
-        if MFMailComposeViewController.canSendMail() {
-            
-            let itemsToSend = DataManager.shared.data.filter { $0.selected }
-            if itemsToSend.count > 0 {
-                var textToSend = ""
-                for item in itemsToSend {
-                    textToSend += item.name
-                    textToSend += "\n"
-                }
-                
-                let mail = MFMailComposeViewController()
-                mail.mailComposeDelegate = self
-                mail.setSubject("Message!")
-                mail.setMessageBody(textToSend, isHTML: false)
-                
-                present(mail, animated: true)
+        let itemsToSend = DataManager.shared.data.filter { $0.selected }
+        
+        if itemsToSend.count > 0 {
+            var textToSend = ""
+            for item in itemsToSend {
+                textToSend += item.name
+                textToSend += "\n"
             }
+            let vc = UIActivityViewController(activityItems: [textToSend], applicationActivities: [])
+            vc.popoverPresentationController?.barButtonItem = sender
+            present(vc, animated: true)
         }
     }
     
@@ -179,12 +172,5 @@ extension TableViewController: ItemProtocol {
         if let detailVC = parentVC?.ipadDetailVC, let detailItem = detailVC.item, item == detailItem {
             detailVC.noItemInfo()
         }
-    }
-}
-
-extension TableViewController: MFMailComposeViewControllerDelegate {
-
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
     }
 }
