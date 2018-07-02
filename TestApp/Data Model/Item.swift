@@ -8,21 +8,11 @@
 
 import Foundation
 
-//struct Item: Codable {
-//
-//    var name:     String
-//    var imageUrl: String
-//
-//    enum CodingKeys: String, CodingKey {
-//        case name
-//        case imageUrl = "image"
-//    }
-//}
-
-struct Item: Codable {
+class Item: Codable {
     
-    var name:     String
-    var imageUrl: String
+    var name:     String = ""
+    var imageUrl: String = ""
+    var selected: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case name     = "title"

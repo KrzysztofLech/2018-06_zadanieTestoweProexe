@@ -7,20 +7,26 @@
 //
 
 import UIKit
+import MessageUI
 
 class TableViewController: UIViewController {
-
+    
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var tableView: UITableView!
+    
     var parentVC: MainViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.tableFooterView = UIView()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        showItemsNumber()
         showLastSelectedCell()
     }
     
@@ -33,13 +39,38 @@ class TableViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func shareButtonAction(_ sender: UIBarButtonItem) {
+        if MFMailComposeViewController.canSendMail() {
+            
+            let itemsToSend = DataManager.shared.data.filter { $0.selected }
+            if itemsToSend.count > 0 {
+                var textToSend = ""
+                for item in itemsToSend {
+                    textToSend += item.name
+                    textToSend += "\n"
+                }
+                
+                let mail = MFMailComposeViewController()
+                mail.mailComposeDelegate = self
+                mail.setSubject("Message!")
+                mail.setMessageBody(textToSend, isHTML: false)
+                
+                present(mail, animated: true)
+            }
+        }
+    }
+    
+    private func showItemsNumber() {
+        navigationBar.topItem?.title = String(format: "Downloaded %i items", DataManager.shared.data.count)
+    }
 }
 
 extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let dataCount = DataManager.shared.data.count
-        return (dataCount > 100) ? 100 : dataCount
+        return dataCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,6 +88,9 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
             if UserDefaultsManager.shared.selectedCellRowIndex == indexPath.row {
                 cell.cellState = .selected
             }
+            
+            cell.delegate = self
+            
             return cell
         }
         return UITableViewCell()
@@ -126,5 +160,31 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
             let selectedItem = DataManager.shared.data[indexPath.row]
             showDetails(withItem: selectedItem)
         }
+    }
+}
+
+extension TableViewController: ItemProtocol {
+    
+    func deleteItem(item: Item) {
+        for (index, arrayItem) in DataManager.shared.data.enumerated() {
+            if arrayItem.imageUrl == item.imageUrl {
+                DataManager.shared.data.remove(at: index)
+                let indexPath = IndexPath(row: index, section: 0)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                showItemsNumber()
+            }
+        }
+        
+        // when deleted item was selected
+        if let detailVC = parentVC?.ipadDetailVC, let detailItem = detailVC.item, item == detailItem {
+            detailVC.noItemInfo()
+        }
+    }
+}
+
+extension TableViewController: MFMailComposeViewControllerDelegate {
+
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 }

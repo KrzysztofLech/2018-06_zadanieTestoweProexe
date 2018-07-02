@@ -60,4 +60,9 @@ class DetailViewController: UIViewController {
     func hideBackButton(_ action: Bool) {
         backButton.isHidden = action
     }
+    
+    func noItemInfo() {
+        itemImageView.image = nil
+        itemTitleLabel.text = "Select Item"
+    }
 }
