@@ -10,6 +10,7 @@
 		627D794231AD8B36B5D7648A /* Pods_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE94239D6B61AF681E2C068 /* Pods_TestApp.framework */; };
 		6B46004420E3D253005E972F /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B46004320E3D253005E972F /* TableViewController.swift */; };
 		6B46004620E3D260005E972F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B46004520E3D260005E972F /* DetailViewController.swift */; };
+		6B62D28920EB443800197B6F /* DetailsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B62D28820EB443800197B6F /* DetailsContentViewController.swift */; };
 		6B76B28520E2512100566BAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B76B28420E2512100566BAB /* AppDelegate.swift */; };
 		6B76B28C20E2512100566BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B76B28B20E2512100566BAB /* Assets.xcassets */; };
 		6B76B28F20E2512100566BAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B76B28D20E2512100566BAB /* LaunchScreen.storyboard */; };
@@ -33,6 +34,7 @@
 		56FC680C007B8A900EF84CA3 /* Pods-TestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestApp/Pods-TestApp.release.xcconfig"; sourceTree = "<group>"; };
 		6B46004320E3D253005E972F /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		6B46004520E3D260005E972F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		6B62D28820EB443800197B6F /* DetailsContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsContentViewController.swift; sourceTree = "<group>"; };
 		6B76B28120E2512100566BAB /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B76B28420E2512100566BAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B76B28B20E2512100566BAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				6B76B29D20E2546300566BAB /* MainViewController.swift */,
 				6B46004320E3D253005E972F /* TableViewController.swift */,
 				6B46004520E3D260005E972F /* DetailViewController.swift */,
+				6B62D28820EB443800197B6F /* DetailsContentViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				6BD541AF20E4BC6600125E8F /* UserDefaultsManager.swift in Sources */,
 				6B76B29C20E2533200566BAB /* StartingViewController.swift in Sources */,
 				6BEF44CA20EA592B0036AF3D /* Item+Equatable.swift in Sources */,
+				6B62D28920EB443800197B6F /* DetailsContentViewController.swift in Sources */,
 				6BE18E2720E2579A006D79A4 /* ReachabilityManager.swift in Sources */,
 				6B76B28520E2512100566BAB /* AppDelegate.swift in Sources */,
 			);

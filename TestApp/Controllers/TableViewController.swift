@@ -25,17 +25,20 @@ class TableViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        parentVC?.ipadDetailVC?.delegate = self
+        
         showItemsNumber()
         showLastSelectedCell()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Detail VC" {
-            if let vc = segue.destination as? DetailViewController {
-                if let item = sender as? Item {
-                    vc.item = item
-                }
-            }
+        if
+            segue.identifier == "Detail VC",
+            let vc = segue.destination as? DetailViewController,
+            let selectedItemIndex = sender as? Int {
+            
+            vc.delegate = self
+            vc.currentPageIndex = selectedItemIndex
         }
     }
     
@@ -90,13 +93,12 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectCell(withIndexPath: indexPath, withScroll: false)
+        selectCell(withIndex: indexPath.row, withScroll: false)
         
-        let selectedItem = DataManager.shared.data[indexPath.row]
         if currentDeviceIsPad() {
-            showDetails(withItem: selectedItem)
+            showDetails(withIndex: indexPath.row)
         } else {
-            performSegue(withIdentifier: "Detail VC", sender: selectedItem)
+            performSegue(withIdentifier: "Detail VC", sender: indexPath.row)
         }
     }
     
@@ -122,11 +124,12 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Other TableView Methods
     
-    fileprivate func showDetails(withItem item: Item) {
-        parentVC?.ipadDetailVC?.item = item
-        if currentOrientationIsPortrait() {
-            parentVC?.showOnlyDetails()
-        }
+    fileprivate func showDetails(withIndex index: Int) {
+        parentVC?.ipadDetailVC?.gotoPage(index)
+        
+//        if currentOrientationIsPortrait() {
+//            parentVC?.showOnlyDetails()
+//        }
     }
     
     fileprivate func deselectPreviousSelectedCell() {
@@ -136,7 +139,8 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    fileprivate func selectCell(withIndexPath indexPath: IndexPath, withScroll scroll: Bool) {
+    fileprivate func selectCell(withIndex index: Int, withScroll scroll: Bool) {
+        let indexPath = IndexPath(row: index, section: 0)
         let scrollPosition: UITableViewScrollPosition = scroll ? .middle : .none
         tableView.selectRow(at: indexPath, animated: false, scrollPosition: scrollPosition)
         
@@ -146,12 +150,11 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     fileprivate func showLastSelectedCell() {
-        let indexPath = IndexPath(row: UserDefaultsManager.shared.selectedCellRowIndex, section: 0)
-        selectCell(withIndexPath: indexPath, withScroll: true)
+        let index = UserDefaultsManager.shared.selectedCellRowIndex
+        selectCell(withIndex: index, withScroll: true)
         
         if currentDeviceIsPad() {
-            let selectedItem = DataManager.shared.data[indexPath.row]
-            showDetails(withItem: selectedItem)
+            showDetails(withIndex: index)
         }
     }
 }
@@ -168,9 +171,19 @@ extension TableViewController: ItemProtocol {
             }
         }
         
+        
+
         // when deleted item was selected
-        if let detailVC = parentVC?.ipadDetailVC, let detailItem = detailVC.item, item == detailItem {
-            detailVC.noItemInfo()
-        }
+//        if let detailVC = parentVC?.ipadDetailVC, let detailItem = detailVC.item, item == detailItem {
+//            detailVC.noItemInfo()
+//        }
+    }
+}
+
+extension TableViewController: DetailsProtocol {
+    
+    func setupSelectedCell(index: Int) {
+        selectCell(withIndex: index, withScroll: false)
+        tableView.reloadData()
     }
 }
