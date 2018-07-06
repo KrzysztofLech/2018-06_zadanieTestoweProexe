@@ -89,7 +89,8 @@ class DetailViewController: UIViewController {
     func initPageController() {
         guard itemsNumber > 0, let firstDetailsVC = viewControllerAtIndex(currentPageIndex) else { return }
         
-        pageVC = storyboard?.instantiateViewController(withIdentifier: "DetailsPageViewController") as! UIPageViewController
+        pageVC = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+
         pageVC.dataSource = self
         pageVC.delegate = self
         
@@ -100,9 +101,18 @@ class DetailViewController: UIViewController {
             completion: nil)
         
         addChildViewController(pageVC)
-        view.addSubview(pageVC.view)
-        pageVC.didMove(toParentViewController: self)
+        
+        pageVC.view.translatesAutoresizingMaskIntoConstraints = false
         view.insertSubview(pageVC.view, belowSubview: backButton)
+        
+        NSLayoutConstraint.activate([
+            pageVC.view.topAnchor.constraint(equalTo: view.topAnchor),
+            pageVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            pageVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            pageVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            ])
+        
+        pageVC.didMove(toParentViewController: self)
     }
     
     private func viewControllerAtIndex(_ index: Int) -> DetailsContentViewController? {
