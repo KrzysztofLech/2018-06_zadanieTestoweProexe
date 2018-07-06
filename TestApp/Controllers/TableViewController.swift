@@ -127,9 +127,9 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     fileprivate func showDetails(withIndex index: Int) {
         parentVC?.ipadDetailVC?.gotoPage(index)
         
-//        if currentOrientationIsPortrait() {
-//            parentVC?.showOnlyDetails()
-//        }
+        if currentOrientationIsPortrait() {
+            parentVC?.showOnlyDetails()
+        }
     }
     
     fileprivate func deselectPreviousSelectedCell() {
@@ -153,7 +153,7 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
         let index = UserDefaultsManager.shared.selectedCellRowIndex
         selectCell(withIndex: index, withScroll: true)
         
-        if currentDeviceIsPad() {
+        if currentDeviceIsPad() && !currentOrientationIsPortrait() {
             showDetails(withIndex: index)
         }
     }
