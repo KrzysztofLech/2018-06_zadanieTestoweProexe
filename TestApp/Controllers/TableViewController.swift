@@ -101,6 +101,10 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
             performSegue(withIdentifier: "Detail VC", sender: indexPath.row)
         }
     }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        deleteItem(item: DataManager.shared.data[indexPath.row])
+    }
     
     // MARK: - Appearance Methods
     
@@ -163,17 +167,17 @@ extension TableViewController: ItemProtocol {
     
     func deleteItem(item: Item) {
         for (index, arrayItem) in DataManager.shared.data.enumerated() {
-            if arrayItem.imageUrl == item.imageUrl {
+            if arrayItem == item {
                 DataManager.shared.data.remove(at: index)
                 let indexPath = IndexPath(row: index, section: 0)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 showItemsNumber()
+                
+                // when deleted item was selected
+                if index == UserDefaultsManager.shared.selectedCellRowIndex && currentDeviceIsPad() {
+                    parentVC?.ipadDetailVC?.showNoItemInfo()
+                }
             }
-        }
-
-        // when deleted item was selected
-        if currentDeviceIsPad() {
-            parentVC?.ipadDetailVC?.showNoItemInfo()
         }
     }
 }
