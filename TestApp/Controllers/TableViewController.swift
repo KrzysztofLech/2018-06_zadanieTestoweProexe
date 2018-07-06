@@ -170,13 +170,11 @@ extension TableViewController: ItemProtocol {
                 showItemsNumber()
             }
         }
-        
-        
 
         // when deleted item was selected
-//        if let detailVC = parentVC?.ipadDetailVC, let detailItem = detailVC.item, item == detailItem {
-//            detailVC.noItemInfo()
-//        }
+        if currentDeviceIsPad() {
+            parentVC?.ipadDetailVC?.showNoItemInfo()
+        }
     }
 }
 

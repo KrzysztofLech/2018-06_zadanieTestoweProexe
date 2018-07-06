@@ -317,10 +317,29 @@
                     <size key="freeformSize" width="512" height="748"/>
                     <connections>
                         <outlet property="backButton" destination="1n4-hD-3qm" id="Svh-3L-Wd8"/>
+                        <outlet property="noDataView" destination="Hbj-0a-ZXt" id="jQ4-sV-WXY"/>
                         <outlet property="presentedItemLabel" destination="VQi-zp-geG" id="LgJ-OJ-Nne"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XV6-Df-xFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="Hbj-0a-ZXt">
+                    <rect key="frame" x="0.0" y="0.0" width="511" height="352"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select item" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRF-sg-E5b">
+                            <rect key="frame" x="207" y="163.5" width="97.5" height="26.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="22"/>
+                            <color key="textColor" red="0.96681961180023057" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="HRF-sg-E5b" firstAttribute="centerX" secondItem="Hbj-0a-ZXt" secondAttribute="centerX" id="9ao-JF-fs7"/>
+                        <constraint firstItem="HRF-sg-E5b" firstAttribute="centerY" secondItem="Hbj-0a-ZXt" secondAttribute="centerY" id="nxz-C4-2rF"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="EQe-g7-6Ez"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="946" y="838"/>
         </scene>

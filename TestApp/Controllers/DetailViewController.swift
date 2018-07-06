@@ -16,6 +16,7 @@ class DetailViewController: UIViewController {
 
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var presentedItemLabel: UILabel!
+    @IBOutlet private var noDataView: UIView!
     
     var parentVC: MainViewController?
     var delegate: TableViewController?
@@ -61,10 +62,20 @@ class DetailViewController: UIViewController {
     // MARK: - Other Methods
     // ----------------------------------------------------
     
-    func noItemInfo() {
-        /// TODO
-        //itemImageView.image = nil
-        //itemTitleLabel.text = "Select Item"
+    private func hideNoItemInfo() {
+        noDataView.removeFromSuperview()
+    }
+    
+    func showNoItemInfo() {
+        noDataView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(noDataView)
+        
+        NSLayoutConstraint.activate([
+            noDataView.topAnchor.constraint(equalTo: view.topAnchor),
+            noDataView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            noDataView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            noDataView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            ])
     }
     
     func refreshCurrentPresentedItemLabel() {
@@ -104,6 +115,8 @@ class DetailViewController: UIViewController {
     }
     
     func gotoPage(_ index: Int) {
+        hideNoItemInfo()
+        
         currentPageIndex = index
         if let vc = viewControllerAtIndex(index) {
             pageVC.setViewControllers([vc], direction: .forward, animated: false, completion: nil)
