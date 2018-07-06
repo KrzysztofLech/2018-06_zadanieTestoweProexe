@@ -67,15 +67,8 @@ class DetailViewController: UIViewController {
     }
     
     func showNoItemInfo() {
-        noDataView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(noDataView)
-        
-        NSLayoutConstraint.activate([
-            noDataView.topAnchor.constraint(equalTo: view.topAnchor),
-            noDataView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            noDataView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            noDataView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-            ])
+        noDataView.setConstraintsEqualTo(view: view)
     }
     
     func refreshCurrentPresentedItemLabel() {
@@ -102,16 +95,8 @@ class DetailViewController: UIViewController {
         
         addChildViewController(pageVC)
         
-        pageVC.view.translatesAutoresizingMaskIntoConstraints = false
         view.insertSubview(pageVC.view, belowSubview: backButton)
-        
-        NSLayoutConstraint.activate([
-            pageVC.view.topAnchor.constraint(equalTo: view.topAnchor),
-            pageVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            pageVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            pageVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-            ])
-        
+        pageVC.view.setConstraintsEqualTo(view: view)
         pageVC.didMove(toParentViewController: self)
     }
     

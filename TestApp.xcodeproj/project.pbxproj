@@ -20,6 +20,7 @@
 		6B76B2A220E256BE00566BAB /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B76B2A120E256BE00566BAB /* Helper.swift */; };
 		6B7B089520E3EAFD0009F9B7 /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B089420E3EAFD0009F9B7 /* DataTableViewCell.swift */; };
 		6B96C9AB20EA4296004DC869 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B96C9AA20EA4296004DC869 /* Main.storyboard */; };
+		6BAC9C7B20EFB2E10045C932 /* UIView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC9C7A20EFB2E10045C932 /* UIView+extensions.swift */; };
 		6BD541AF20E4BC6600125E8F /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD541AE20E4BC6600125E8F /* UserDefaultsManager.swift */; };
 		6BE18E2720E2579A006D79A4 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE18E2620E2579A006D79A4 /* ReachabilityManager.swift */; };
 		6BE18E2B20E25823006D79A4 /* UIApplication+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE18E2A20E25823006D79A4 /* UIApplication+extensions.swift */; };
@@ -46,6 +47,7 @@
 		6B76B2A120E256BE00566BAB /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		6B7B089420E3EAFD0009F9B7 /* DataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
 		6B96C9AA20EA4296004DC869 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		6BAC9C7A20EFB2E10045C932 /* UIView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extensions.swift"; sourceTree = "<group>"; };
 		6BD541AE20E4BC6600125E8F /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		6BE18E2620E2579A006D79A4 /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		6BE18E2A20E25823006D79A4 /* UIApplication+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+extensions.swift"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			children = (
 				6BE18E2A20E25823006D79A4 /* UIApplication+extensions.swift */,
 				6BEF44C920EA592B0036AF3D /* Item+Equatable.swift */,
+				6BAC9C7A20EFB2E10045C932 /* UIView+extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				6BE18E2F20E258C9006D79A4 /* CacheManager.swift in Sources */,
 				6BE18E2B20E25823006D79A4 /* UIApplication+extensions.swift in Sources */,
 				6B7B089520E3EAFD0009F9B7 /* DataTableViewCell.swift in Sources */,
+				6BAC9C7B20EFB2E10045C932 /* UIView+extensions.swift in Sources */,
 				6B76B29E20E2546300566BAB /* MainViewController.swift in Sources */,
 				6BE18E2D20E2586E006D79A4 /* ImageManager.swift in Sources */,
 				6B76B2A220E256BE00566BAB /* Helper.swift in Sources */,
