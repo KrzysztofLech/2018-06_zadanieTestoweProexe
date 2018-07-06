@@ -37,7 +37,9 @@ class DataTableViewCell: UITableViewCell {
     
     var delegate: ItemProtocol?
     
+    
     // MARK: - Methods
+    // ----------------------------------------------------
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -66,6 +68,10 @@ class DataTableViewCell: UITableViewCell {
         itemSwitch.setOn(item.selected, animated: false)
     }
     
+    
+    // MARK: - Back Button Methods
+    // ----------------------------------------------------
+    
     @IBAction func switchValueChangedAction() {
         guard let item = item else { return }
         
@@ -80,6 +86,7 @@ class DataTableViewCell: UITableViewCell {
     
     
     // MARK: - Cell appearance styles
+    // ----------------------------------------------------
     
     private func deselectedAppearance() {
         self.backgroundColor = .white

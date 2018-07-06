@@ -15,12 +15,15 @@ class TableViewController: UIViewController {
     
     var parentVC: MainViewController?
     
+    
+    // MARK: - VC Life Cycle Methods
+    // ----------------------------------------------------
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,6 +45,9 @@ class TableViewController: UIViewController {
         }
     }
     
+    // MARK: - Other Methods
+    // ----------------------------------------------------
+    
     @IBAction func shareButtonAction(_ sender: UIBarButtonItem) {
         let itemsToSend = DataManager.shared.data.filter { $0.selected }
         
@@ -61,6 +67,9 @@ class TableViewController: UIViewController {
         navigationBar.topItem?.title = String(format: "Downloaded %i items", DataManager.shared.data.count)
     }
 }
+
+// MARK: - Table View Methods
+// ----------------------------------------------------
 
 extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -107,6 +116,7 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     // MARK: - Appearance Methods
+    // ----------------------------------------------------
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         deselectPreviousSelectedCell()
@@ -127,6 +137,7 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     // MARK: - Other TableView Methods
+    // ----------------------------------------------------
     
     fileprivate func showDetails(withIndex index: Int) {
         parentVC?.ipadDetailVC?.gotoPage(index)
@@ -162,6 +173,9 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
+// MARK: - Protocol Methods
+// ----------------------------------------------------
 
 extension TableViewController: ItemProtocol {
     

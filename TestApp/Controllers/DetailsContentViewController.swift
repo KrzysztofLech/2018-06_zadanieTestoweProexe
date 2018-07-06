@@ -14,8 +14,6 @@ class DetailsContentViewController: UIViewController {
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet private weak var itemTitleLabel: UILabel!
     
-    
-    
     var pageIndex: Int?
     var item: Item!
     
