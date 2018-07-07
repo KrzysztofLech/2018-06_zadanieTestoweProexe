@@ -13,8 +13,8 @@ class CacheManager {
     static let shared = CacheManager()
     
     enum CacheConfiguration {
-        static let maxObjects = 5000
-        static let maxSize = 150 * 150 * 5000
+        static let maxObjects = 100
+        static let maxSize = 1200 * 1200 * 100
     }
     
     private static var cache: NSCache<NSString, AnyObject> = {

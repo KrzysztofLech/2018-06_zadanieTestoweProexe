@@ -11,17 +11,21 @@ import Alamofire
 
 struct RequestManager {
     
-    //private static let baseUrl = "http://client.proexe.eu/json.json/"
-    private static let baseUrl = "https://jsonplaceholder.typicode.com/photos/"
-    
+    private static let baseUrl = "https://pixabay.com/api/"
+    private static let parameters: [String : Any] = [
+        "key" : "9485555-ef481e6738821b2b89a42b79c",
+        "image_type" : "photo",
+        "per_page" : 100,
+        "q" : "greece+sea"
+    ]
+
     
     static func getData(closure: @escaping (_ data: Data) -> ()) {
         guard let endPointUrl = URL(string: baseUrl) else {
             print("Error: Cannot create URL")
             return
         }
-        
-        Alamofire.request(endPointUrl)
+        Alamofire.request(endPointUrl, method: .get, parameters: parameters)
             .responseData(completionHandler: { (response) in
                 
                 guard let data = response.data else {

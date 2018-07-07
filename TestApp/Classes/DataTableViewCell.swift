@@ -24,7 +24,7 @@ class DataTableViewCell: UITableViewCell {
     @IBOutlet weak var itemSwitch: UISwitch!
     
     var item: Item?
-    var imageUrl = ""
+    var previewUrl = ""
     var cellState: CellStyle = .none {
         didSet {
             switch cellState {
@@ -55,7 +55,7 @@ class DataTableViewCell: UITableViewCell {
         item = nil
         itemImageView.image = nil
         itemTitleLabel.text = nil
-        imageUrl = ""
+        previewUrl = ""
         activityIndicator.startAnimating()
         cellState = .none
         itemSwitch.setOn(false, animated: false)
@@ -64,7 +64,7 @@ class DataTableViewCell: UITableViewCell {
     func update(withItem item: Item) {
         self.item = item
         itemTitleLabel.text = item.name
-        imageUrl = item.imageUrl
+        previewUrl = item.previewUrl
         itemSwitch.setOn(item.selected, animated: false)
     }
     

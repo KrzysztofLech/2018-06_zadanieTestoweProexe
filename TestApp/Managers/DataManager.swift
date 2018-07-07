@@ -14,7 +14,7 @@ class DataManager {
     
     var data: [Item] = {
         var array: [Item] = []
-        array.reserveCapacity(5000)
+        array.reserveCapacity(100)
         return array
     }()
     
@@ -27,7 +27,9 @@ class DataManager {
         RequestManager.getData { (jsonData) in
             let decoder = JSONDecoder()
             do {
-                self.data = try decoder.decode([Item].self, from: jsonData)
+                let apiData = try decoder.decode(ApiData.self, from: jsonData)
+                self.data = apiData.hits
+                
                 print("Downloading acomplished!")
                 DispatchQueue.main.async {
                     completion()

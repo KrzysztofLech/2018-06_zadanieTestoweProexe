@@ -84,8 +84,8 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
             
             let item = DataManager.shared.data[indexPath.row]
             cell.update(withItem: item)
-            ImageManager.getImage(withUrl: item.imageUrl) { image in
-                if cell.imageUrl == item.imageUrl {
+            ImageManager.getImage(withUrl: item.previewUrl) { image in
+                if cell.previewUrl == item.previewUrl {
                     cell.activityIndicator.stopAnimating()
                     cell.itemImageView.image = image
                 }
