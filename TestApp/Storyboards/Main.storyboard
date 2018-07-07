@@ -239,7 +239,7 @@
                                 <rect key="frame" x="237" y="365" width="37" height="37"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eb8-pK-s9r">
-                                <rect key="frame" x="40" y="608.5" width="432" height="26.5"/>
+                                <rect key="frame" x="51" y="608.5" width="410" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -247,13 +247,13 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="MZi-2G-bht" firstAttribute="trailing" secondItem="Eb8-pK-s9r" secondAttribute="trailing" constant="40" id="3oJ-bo-xL6"/>
                             <constraint firstItem="Atb-SV-4gd" firstAttribute="centerY" secondItem="Smw-kO-wPu" secondAttribute="centerY" id="4kE-gc-Usa"/>
                             <constraint firstItem="iJX-ew-O6S" firstAttribute="centerY" secondItem="Atb-SV-4gd" secondAttribute="centerY" id="HjM-Rt-ry6"/>
                             <constraint firstItem="Atb-SV-4gd" firstAttribute="centerX" secondItem="Smw-kO-wPu" secondAttribute="centerX" id="IOg-qt-qoL"/>
                             <constraint firstItem="Eb8-pK-s9r" firstAttribute="top" secondItem="Atb-SV-4gd" secondAttribute="bottom" constant="20" id="Nsr-Zc-Xac"/>
+                            <constraint firstItem="Eb8-pK-s9r" firstAttribute="width" secondItem="Atb-SV-4gd" secondAttribute="width" id="RMO-Vk-vch"/>
                             <constraint firstItem="iJX-ew-O6S" firstAttribute="centerX" secondItem="Atb-SV-4gd" secondAttribute="centerX" id="VVF-5x-rOU"/>
-                            <constraint firstItem="Eb8-pK-s9r" firstAttribute="leading" secondItem="MZi-2G-bht" secondAttribute="leading" constant="40" id="tOo-Lc-E1t"/>
+                            <constraint firstItem="Eb8-pK-s9r" firstAttribute="centerX" secondItem="Atb-SV-4gd" secondAttribute="centerX" id="fYU-Nj-8ag"/>
                             <constraint firstItem="Atb-SV-4gd" firstAttribute="width" secondItem="Smw-kO-wPu" secondAttribute="width" multiplier="8:10" id="uSP-Gm-0Lj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MZi-2G-bht"/>
