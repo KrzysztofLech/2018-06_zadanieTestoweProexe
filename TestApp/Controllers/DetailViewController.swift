@@ -103,7 +103,8 @@ class DetailViewController: UIViewController {
     private func viewControllerAtIndex(_ index: Int) -> DetailsContentViewController? {
         guard index < itemsNumber else { return nil }
         
-        let pageContentVC = storyboard?.instantiateViewController(withIdentifier: "DetailsContentViewController") as! DetailsContentViewController
+        let storyboard = UIStoryboard(name: "Details", bundle: nil)
+        let pageContentVC = storyboard.instantiateViewController(withIdentifier: "DetailsContentViewController") as! DetailsContentViewController
         pageContentVC.pageIndex = index
         pageContentVC.item = DataManager.shared.data[index]
         return pageContentVC
