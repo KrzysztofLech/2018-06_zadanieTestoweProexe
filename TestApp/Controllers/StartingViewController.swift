@@ -14,6 +14,7 @@ class StartingViewController: UIViewController {
         super.viewDidAppear(animated)
         
         getData()
+        ReachabilityManager.shared.startMonitoring()
     }
     
     private func getData() {
