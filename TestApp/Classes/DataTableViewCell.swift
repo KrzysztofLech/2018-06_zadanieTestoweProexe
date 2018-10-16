@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum CellStyle {
+enum MyCellStyle {
     case none, selected, highlighted
 }
 
@@ -25,7 +25,7 @@ class DataTableViewCell: UITableViewCell {
     
     var item: Item?
     var previewUrl = ""
-    var cellState: CellStyle = .none {
+    var cellState: MyCellStyle = .none {
         didSet {
             switch cellState {
             case .none: deselectedAppearance()

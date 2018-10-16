@@ -131,7 +131,7 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
         setCellStyle(.none, withIndexPath: indexPath)
     }
     
-    private func setCellStyle(_ cellStyle: CellStyle, withIndexPath indexPath: IndexPath) {
+    private func setCellStyle(_ cellStyle: MyCellStyle, withIndexPath indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as? DataTableViewCell
         cell?.cellState = cellStyle
     }
